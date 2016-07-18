@@ -21,6 +21,7 @@ public class Range {
      * @return The value that fits.
      */
     public double limitToRange(double value, int lowerLimit, int upperLimit) {
+        checkLimits(lowerLimit, upperLimit);
         double testValue = value;
         int rangeLength = upperLimit - lowerLimit;
         while (!fits(testValue, lowerLimit, upperLimit)) {
@@ -42,6 +43,12 @@ public class Range {
 
     private boolean fits(double value, int lowerLimit, int upperLimit) {
         return (value >= lowerLimit) && (value < upperLimit);
+    }
+
+    private void checkLimits(int lowerLimit, int upperLimit) {
+        if (lowerLimit > upperLimit) {
+            throw new RuntimeException("lowerLimit > upperLimit in Range.limitToRange()");
+        }
     }
 
 

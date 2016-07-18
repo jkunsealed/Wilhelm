@@ -57,6 +57,11 @@ public class RangeTest {
         assertEquals(expected, range.limitToRange(value, 20, 90), margin);
     }
 
+    @Test (expected = RuntimeException.class)
+    public void limitToRangeLimitsSequenceError() throws Exception {
+        double value = 90.0;
+        range.limitToRange(value, 90, 20);
+    }
 
     @Test
     public void limitToCircle() throws Exception {
@@ -92,6 +97,7 @@ public class RangeTest {
         double expected = 0.0;
         assertEquals(expected, range.limitToCircle(value), margin);
     }
+
 
 
 
