@@ -40,12 +40,16 @@ public enum BodyNames {
     INTP_PERG(22),
     ERIS(SweConst.SE_AST_OFFSET + 999001);
 
-    private int id;
+    private final int id;
 
     BodyNames(int id) {
         this.id = id;
     }
 
+    /**
+     * Get internal id for body. This id is identical to the id for the Swiss Ephemeris.
+     * @return the internal id.
+     */
     public int getId() {
         return id;
     }
