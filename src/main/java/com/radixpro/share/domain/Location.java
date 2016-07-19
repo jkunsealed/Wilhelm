@@ -7,6 +7,7 @@
 
 package com.radixpro.share.domain;
 
+import com.radixpro.share.exceptions.ParameterOutOfRangeException;
 import com.radixpro.share.util.Constants;
 
 /**
@@ -21,6 +22,10 @@ public class Location {
         return longitude;
     }
 
+    /**
+     * Sets longitude and checks for validness.
+     * @param longitude value for longitude.
+     */
     public void setLongitude(double longitude) {
         validateLongitude(longitude);
         this.longitude = longitude;
@@ -30,6 +35,10 @@ public class Location {
         return latitude;
     }
 
+    /**
+     * Sets latitude and checks for validness.
+     * @param latitude value for latitude.
+     */
     public void setLatitude(double latitude) {
         validateLatitude(latitude);
         this.latitude = latitude;
@@ -37,13 +46,13 @@ public class Location {
 
     private void validateLongitude(double longitude) {
         if (longitude < Constants.MIN_LONGITUDE || longitude > Constants.MAX_LONGITUDE) {
-            throw new RuntimeException("Longitude not in range");
+            throw new ParameterOutOfRangeException(Double.toString(longitude));
         }
     }
 
     private void validateLatitude(double latitude) {
         if (latitude < Constants.MIN_LATITUDE || latitude > Constants.MAX_LATITUDE) {
-            throw new RuntimeException("Latitude not in range");
+            throw new ParameterOutOfRangeException(Double.toString(latitude));
         }
     }
 }

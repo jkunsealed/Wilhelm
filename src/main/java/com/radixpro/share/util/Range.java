@@ -7,6 +7,8 @@
 
 package com.radixpro.share.util;
 
+import com.radixpro.share.exceptions.ParametersInWrongSequenceException;
+
 /**
  * Handles ranges.
  */
@@ -47,7 +49,7 @@ public class Range {
 
     private void checkLimits(int lowerLimit, int upperLimit) {
         if (lowerLimit > upperLimit) {
-            throw new RuntimeException("lowerLimit > upperLimit in Range.limitToRange()");
+            throw new ParametersInWrongSequenceException(Integer.toString(lowerLimit), Integer.toString(upperLimit));
         }
     }
 

@@ -5,20 +5,19 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.util;
+package com.radixpro.share.exceptions;
 
-/**
- * Shared constants.
- */
-public class Constants {
+import com.sun.istack.internal.NotNull;
 
-    public static final double MAX_LONGITUDE = 180.0;
-    public static final double MIN_LONGITUDE = -180.0;
-    public static final double MAX_LATITUDE = 89.999999;
-    public static final double MIN_LATITUDE = -89.999999;
+public class ParametersInWrongSequenceException extends RuntimeException {
 
-    private Constants() {
-        // prevent instantiation.
+    private String message;
+
+    public ParametersInWrongSequenceException(@NotNull String value1, @NotNull String value2) {
+        message = "Parameters " + value1 + " and " + value2 + " in wrong sequence.";
     }
 
+    public String getMessage() {
+        return message;
+    }
 }

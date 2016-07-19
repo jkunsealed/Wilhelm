@@ -7,6 +7,7 @@
 
 package com.radixpro.share.domain;
 
+import com.radixpro.share.exceptions.ParameterOutOfRangeException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,13 +30,13 @@ public class LocationTest {
         assertEquals(longitude, location.getLongitude(), margin);
     }
 
-    @Test (expected = RuntimeException.class)
+    @Test (expected = ParameterOutOfRangeException.class)
     public void setLongitudeTooSmall() {
         double longitude = -190.0;
         location.setLongitude(longitude);
     }
 
-    @Test (expected = RuntimeException.class)
+    @Test (expected = ParameterOutOfRangeException.class)
     public void setLongitudeTooLarge() {
         double longitude = 190.0;
         location.setLongitude(longitude);

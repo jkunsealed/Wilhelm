@@ -7,6 +7,7 @@
 
 package com.radixpro.share.util;
 
+import com.radixpro.share.exceptions.ParametersInWrongSequenceException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -57,7 +58,7 @@ public class RangeTest {
         assertEquals(expected, range.limitToRange(value, 20, 90), margin);
     }
 
-    @Test (expected = RuntimeException.class)
+    @Test (expected = ParametersInWrongSequenceException.class)
     public void limitToRangeLimitsSequenceError() throws Exception {
         double value = 90.0;
         range.limitToRange(value, 90, 20);

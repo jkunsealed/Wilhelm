@@ -5,20 +5,22 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.util;
+package com.radixpro.share.exceptions;
+
+import com.sun.istack.internal.NotNull;
 
 /**
- * Shared constants.
+ * Exception that should be thrown if a parameter is outside of a predefined range.
  */
-public class Constants {
+public class ParameterOutOfRangeException extends RuntimeException {
 
-    public static final double MAX_LONGITUDE = 180.0;
-    public static final double MIN_LONGITUDE = -180.0;
-    public static final double MAX_LATITUDE = 89.999999;
-    public static final double MIN_LATITUDE = -89.999999;
+    private String message;
 
-    private Constants() {
-        // prevent instantiation.
+    public ParameterOutOfRangeException(@NotNull String value) {
+        message = "Parameter " + value + " out of range.";
     }
 
+    public String getMessage() {
+        return message;
+    }
 }
