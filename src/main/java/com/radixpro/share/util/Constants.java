@@ -12,6 +12,9 @@ package com.radixpro.share.util;
  */
 public class Constants {
 
+    // FIXME correct values for jdnr limits
+    public static final double MAX_JULIAN_DAY_NR = 12345678.0;
+    public static final double MIN_JULIAN_DAY_NR = -12345678.0;
     public static final double MAX_LONGITUDE = 180.0;
     public static final double MIN_LONGITUDE = -180.0;
     public static final double MAX_LATITUDE = 89.999999;
