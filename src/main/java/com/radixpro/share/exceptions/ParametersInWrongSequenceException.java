@@ -17,6 +17,7 @@ public class ParametersInWrongSequenceException extends RuntimeException {
         message = "Parameters " + value1 + " and " + value2 + " in wrong sequence.";
     }
 
+    @NotNull
     public String getMessage() {
         return message;
     }

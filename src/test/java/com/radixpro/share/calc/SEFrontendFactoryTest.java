@@ -5,19 +5,25 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.exceptions;
+package com.radixpro.share.calc;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-public class ParameterOutOfRangeExceptionTest {
+public class SEFrontendFactoryTest {
+
+    private SEFrontendFactory factory;
+
+    @Before
+    public void setUp() throws Exception {
+        factory = new SEFrontendFactory();
+
+    }
 
     @Test
-    public void getMessage() throws Exception {
-        String expected = "Parameter 13.0 out of range.";
-        double value = 13.0;
-        ParameterOutOfRangeException poore = new ParameterOutOfRangeException(Double.toString(value));
-        assertEquals(expected, poore.getMessage());
+    public void getSEFrontend() throws Exception {
+        assertNotNull(factory.getSEFrontend());
     }
 }

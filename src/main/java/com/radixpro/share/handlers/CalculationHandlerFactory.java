@@ -5,19 +5,16 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.exceptions;
+package com.radixpro.share.handlers;
 
-import org.junit.Test;
+import com.radixpro.share.calc.SEFrontend;
+import com.radixpro.share.calc.SEFrontendFactory;
 
-import static org.junit.Assert.assertEquals;
+public class CalculationHandlerFactory {
 
-public class ParameterOutOfRangeExceptionTest {
-
-    @Test
-    public void getMessage() throws Exception {
-        String expected = "Parameter 13.0 out of range.";
-        double value = 13.0;
-        ParameterOutOfRangeException poore = new ParameterOutOfRangeException(Double.toString(value));
-        assertEquals(expected, poore.getMessage());
+    public CalculationHandler getCalculationHandler() {
+        SEFrontendFactory seFrontendFactory = new SEFrontendFactory();
+        SEFrontend seFrontend = seFrontendFactory.getSEFrontend();
+        return new CalculationHandler(seFrontend);
     }
 }

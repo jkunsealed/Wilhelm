@@ -7,17 +7,23 @@
 
 package com.radixpro.share.exceptions;
 
-import org.junit.Test;
+import com.sun.istack.internal.NotNull;
 
-import static org.junit.Assert.assertEquals;
+/**
+ * Exception to handle calculation errors.
+ */
+public class CalculationException extends RuntimeException {
 
-public class ParameterOutOfRangeExceptionTest {
+    private String message;
 
-    @Test
-    public void getMessage() throws Exception {
-        String expected = "Parameter 13.0 out of range.";
-        double value = 13.0;
-        ParameterOutOfRangeException poore = new ParameterOutOfRangeException(Double.toString(value));
-        assertEquals(expected, poore.getMessage());
+    public CalculationException(@NotNull String description) {
+        message = "Calculation error: " + description;
     }
+
+    @NotNull
+    public String getMessage() {
+        return message;
+    }
+
+
 }

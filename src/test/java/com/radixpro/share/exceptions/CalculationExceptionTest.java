@@ -11,13 +11,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ParameterOutOfRangeExceptionTest {
 
+public class CalculationExceptionTest {
     @Test
     public void getMessage() throws Exception {
-        String expected = "Parameter 13.0 out of range.";
-        double value = 13.0;
-        ParameterOutOfRangeException poore = new ParameterOutOfRangeException(Double.toString(value));
-        assertEquals(expected, poore.getMessage());
+        CalculationException ce = new CalculationException("description");
+        String expected = "Calculation error: description";
+        assertEquals(expected, ce.getMessage());
     }
 }

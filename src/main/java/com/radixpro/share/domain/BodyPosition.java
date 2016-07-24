@@ -11,8 +11,9 @@ package com.radixpro.share.domain;
  * Defines position in three dimensions for a body or a fictitious point. Also defines the speed of each dimensionm.
  * The actual values depend on the chosen CalculationFlags.
  */
-public class Position {
+public class BodyPosition {
 
+    private BodyNames bodyName;
     private double mainValue;
     private double deviation;
     private double distance;
@@ -21,7 +22,23 @@ public class Position {
     private double speedDistance;
 
     /**
-     * Setter for the mainvalue, this could be longitude, right ascension, azimuth.
+     * Getter for the name of the calculated body.
+     * @return the name of the body.
+     */
+    public BodyNames getBodyName() {
+        return bodyName;
+    }
+
+    /**
+     * Setter for the name of the calculated body.
+     * @param bodyName hte bodyName to use.
+     */
+    public void setBodyName(BodyNames bodyName) {
+        this.bodyName = bodyName;
+    }
+
+    /**
+     * Getter for the mainvalue, this could be longitude, right ascension, azimuth.
      * @return the calculated value
      */
     public double getMainValue() {
@@ -29,7 +46,7 @@ public class Position {
     }
 
     /**
-     * Getter for the mainvalue, this could be longitude, right ascension, azimuth.
+     * Setter for the mainvalue, this could be longitude, right ascension, azimuth.
      * @param mainValue the value to set.
      */
     public void setMainValue(double mainValue) {

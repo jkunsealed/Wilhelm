@@ -5,23 +5,22 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.exceptions;
+package com.radixpro.share.endpoint;
 
 import com.sun.istack.internal.NotNull;
 
-/**
- * Exception that should be thrown if a parameter is outside of a predefined range.
- */
-public class ParameterOutOfRangeException extends RuntimeException {
-
-    private String message;
-
-    public ParameterOutOfRangeException(@NotNull String value) {
-        message = "Parameter " + value + " out of range.";
-    }
+public interface CalculationResponse {
 
     @NotNull
-    public String getMessage() {
-        return message;
-    }
+    /**
+     * Getter for text with status.
+     */
+    String getStatus();
+
+    /**
+     * Setter for text with status.
+     * @param status text to set for status.
+     */
+    void setStatus(@NotNull String status);
+
 }

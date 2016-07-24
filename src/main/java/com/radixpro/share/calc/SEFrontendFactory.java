@@ -5,19 +5,23 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.exceptions;
+package com.radixpro.share.calc;
 
-import org.junit.Test;
+import swisseph.SwissEph;
 
-import static org.junit.Assert.assertEquals;
+import java.io.File;
 
-public class ParameterOutOfRangeExceptionTest {
+public class SEFrontendFactory {
 
-    @Test
-    public void getMessage() throws Exception {
-        String expected = "Parameter 13.0 out of range.";
-        double value = 13.0;
-        ParameterOutOfRangeException poore = new ParameterOutOfRangeException(Double.toString(value));
-        assertEquals(expected, poore.getMessage());
+    private final String path = "." + File.pathSeparator + "se";  // TODO --> constants ??
+    private SwissEph swissEph;
+
+    public SEFrontend getSEFrontend() {
+        swissEph = new SwissEph(path);
+        SEFrontend seFrontend = SEFrontend.getSEFrontEnd();
+        seFrontend.setSwissEph(swissEph);
+        return seFrontend;
     }
+
+
 }

@@ -19,6 +19,8 @@ public class Constants {
     public static final double MIN_LONGITUDE = -180.0;
     public static final double MAX_LATITUDE = 89.999999;
     public static final double MIN_LATITUDE = -89.999999;
+    public static final String STATUS_OK = "OK";
+    public static final String STATUS_UNKNOWN_ERROR = "ERROR_UNKNOWN";
 
     private Constants() {
         // prevent instantiation.

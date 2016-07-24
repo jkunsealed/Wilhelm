@@ -12,9 +12,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class PositionTest {
+public class BodyPositionTest {
 
-    private Position position;
+    private BodyPosition bodyPosition;
+    private final BodyNames bodyName = BodyNames.JUPITER;
     private final double mainValue = 181.1;
     private final double deviation = -1.2;
     private final double distance = 2.2;
@@ -25,42 +26,50 @@ public class PositionTest {
 
     @Before
     public void setUp() throws Exception {
-        position = new Position();
+        bodyPosition = new BodyPosition();
     }
+
+
+    @Test
+    public void setGetBodyName() throws Exception {
+        bodyPosition.setBodyName(bodyName);
+        assertEquals(bodyName, bodyPosition.getBodyName());
+    }
+
 
     @Test
     public void setGetMainValue() throws Exception {
-        position.setMainValue(mainValue);
-        assertEquals(mainValue, position.getMainValue(), margin);
+        bodyPosition.setMainValue(mainValue);
+        assertEquals(mainValue, bodyPosition.getMainValue(), margin);
     }
 
     @Test
     public void setGetDeviation() throws Exception {
-        position.setDeviation(deviation);
-        assertEquals(deviation, position.getDeviation(), margin);
+        bodyPosition.setDeviation(deviation);
+        assertEquals(deviation, bodyPosition.getDeviation(), margin);
     }
 
     @Test
     public void setGetDistance() throws Exception {
-        position.setDistance(distance);
-        assertEquals(distance, position.getDistance(), margin);
+        bodyPosition.setDistance(distance);
+        assertEquals(distance, bodyPosition.getDistance(), margin);
     }
 
     @Test
     public void setGetSpeedMainValue() throws Exception {
-        position.setSpeedMainValue(speedMainValue);
-        assertEquals(speedMainValue, position.getSpeedMainValue(), margin);
+        bodyPosition.setSpeedMainValue(speedMainValue);
+        assertEquals(speedMainValue, bodyPosition.getSpeedMainValue(), margin);
     }
 
     @Test
     public void setGetSpeedDeviation() throws Exception {
-        position.setSpeedDeviation(speedDeviation);
-        assertEquals(speedDeviation, position.getSpeedDeviation(), margin);
+        bodyPosition.setSpeedDeviation(speedDeviation);
+        assertEquals(speedDeviation, bodyPosition.getSpeedDeviation(), margin);
     }
 
     @Test
     public void setGetSpeedDistance() throws Exception {
-        position.setSpeedDistance(speedDistance);
-        assertEquals(speedDistance, position.getSpeedDistance(), margin);
+        bodyPosition.setSpeedDistance(speedDistance);
+        assertEquals(speedDistance, bodyPosition.getSpeedDistance(), margin);
     }
 }

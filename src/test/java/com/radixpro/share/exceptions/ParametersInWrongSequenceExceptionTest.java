@@ -16,12 +16,9 @@ public class ParametersInWrongSequenceExceptionTest {
     @Test
     public void getMessage() throws Exception {
         String expected = "Parameters 13.0 and 11.1 in wrong sequence.";
-        double value1 = 13.0;
-        double value2 = 11.1;
-        try {
-            throw new ParametersInWrongSequenceException(Double.toString(value1), Double.toString(value2));
-        } catch (ParametersInWrongSequenceException wsope) {
-            assertEquals(expected, wsope.getMessage());
-        }
+        String value1 = Double.toString(13.0);
+        String value2 = Double.toString(11.1);
+        ParametersInWrongSequenceException piwse = new ParametersInWrongSequenceException(value1, value2);
+        assertEquals(expected, piwse.getMessage());
     }
 }
