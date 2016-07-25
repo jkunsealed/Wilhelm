@@ -10,9 +10,14 @@ package com.radixpro.share.util;
 import com.radixpro.share.exceptions.ParametersInWrongSequenceException;
 
 /**
- * Handles ranges.
+ * Static class that handles ranges.
  */
-public class Range {
+public final class Range {
+
+    private Range() {
+        // prevent instantation.
+    }
+
 
     /**
      * Makes a value fit within a given range.
@@ -22,7 +27,7 @@ public class Range {
      * @param upperLimit maximum value of the range - exclusive.
      * @return The value that fits.
      */
-    public double limitToRange(double value, int lowerLimit, int upperLimit) {
+    public static double limitToRange(double value, int lowerLimit, int upperLimit) {
         checkLimits(lowerLimit, upperLimit);
         double testValue = value;
         int rangeLength = upperLimit - lowerLimit;
@@ -39,15 +44,15 @@ public class Range {
      * @param value The value to make fit a circle.
      * @return value converted to the range of a circle.
      */
-    public double limitToCircle(double value) {
+    public static double limitToCircle(double value) {
         return limitToRange(value, 0, 360);
     }
 
-    private boolean fits(double value, int lowerLimit, int upperLimit) {
+    private static boolean fits(double value, int lowerLimit, int upperLimit) {
         return (value >= lowerLimit) && (value < upperLimit);
     }
 
-    private void checkLimits(int lowerLimit, int upperLimit) {
+    private static void checkLimits(int lowerLimit, int upperLimit) {
         if (lowerLimit > upperLimit) {
             throw new ParametersInWrongSequenceException(Integer.toString(lowerLimit), Integer.toString(upperLimit));
         }

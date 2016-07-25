@@ -5,14 +5,11 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.handlers;
+package com.radixpro.share.calc;
 
-import com.radixpro.share.calc.SEFrontend;
-import com.radixpro.share.calc.SEFrontendFactory;
+class CalculationHandlerFactory {
 
-public class CalculationHandlerFactory {
-
-    public CalculationHandler getCalculationHandler() {
+    CalculationHandler getCalculationHandler() {
         SEFrontendFactory seFrontendFactory = new SEFrontendFactory();
         SEFrontend seFrontend = seFrontendFactory.getSEFrontend();
         return new CalculationHandler(seFrontend);

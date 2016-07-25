@@ -10,7 +10,7 @@ package com.radixpro.share.util;
 /**
  * Shared constants.
  */
-public class Constants {
+public final class Constants {
 
     // FIXME correct values for jdnr limits
     public static final double MAX_JULIAN_DAY_NR = 12345678.0;

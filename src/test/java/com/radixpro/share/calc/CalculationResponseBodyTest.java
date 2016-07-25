@@ -5,9 +5,10 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.endpoint;
+package com.radixpro.share.calc;
 
 import com.radixpro.share.domain.BodyPosition;
+import com.radixpro.share.domain.CalculationResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

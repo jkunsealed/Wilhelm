@@ -5,11 +5,8 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.endpoint;
+package com.radixpro.share.domain;
 
-import com.radixpro.share.domain.BodyNames;
-import com.radixpro.share.domain.CalculationFlags;
-import com.radixpro.share.domain.Location;
 import com.radixpro.share.exceptions.ParameterOutOfRangeException;
 import com.radixpro.share.util.Constants;
 import javax.validation.constraints.NotNull;

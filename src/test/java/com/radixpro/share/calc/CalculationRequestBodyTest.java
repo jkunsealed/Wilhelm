@@ -5,11 +5,12 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.endpoint;
+package com.radixpro.share.calc;
 
 import com.radixpro.share.domain.BodyNames;
 import com.radixpro.share.domain.CalculationFlags;
 import com.radixpro.share.domain.Location;
+import com.radixpro.share.domain.CalculationRequestBody;
 import com.radixpro.share.exceptions.ParameterOutOfRangeException;
 import org.junit.Before;
 import org.junit.Test;

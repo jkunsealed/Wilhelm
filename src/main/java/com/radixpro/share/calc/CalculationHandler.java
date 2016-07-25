@@ -5,13 +5,11 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.handlers;
+package com.radixpro.share.calc;
 
-import com.radixpro.share.calc.SEFrontend;
-import com.radixpro.share.calc.SEFrontendFactory;
 import com.radixpro.share.domain.BodyNames;
 import com.radixpro.share.domain.CalculationFlags;
-import com.radixpro.share.endpoint.CalculationResponseBody;
+import com.radixpro.share.domain.CalculationResponseBody;
 import com.radixpro.share.util.Constants;
 import com.sun.istack.internal.NotNull;
 import swisseph.SweDate;
@@ -21,16 +19,16 @@ import java.util.List;
 /**
  * Handler for several types of calculations.
  */
-public class CalculationHandler {
+class CalculationHandler {
 
     private final SEFrontend seFrontend;
 
-    public CalculationHandler(@NotNull SEFrontend seFrontend) {
+    CalculationHandler(@NotNull SEFrontend seFrontend) {
         this.seFrontend = seFrontend;
     }
 
     @NotNull
-    public CalculationResponseBody calcBody(@NotNull SweDate sweDate,
+    CalculationResponseBody calcBody(@NotNull SweDate sweDate,
                                             @NotNull BodyNames bodyName,
                                             @NotNull List<CalculationFlags> flags) {
         SEFrontend seFrontend = new SEFrontendFactory().getSEFrontend();

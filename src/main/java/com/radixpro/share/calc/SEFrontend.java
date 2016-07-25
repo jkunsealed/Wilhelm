@@ -22,7 +22,7 @@ import java.util.List;
  * Frontend for calculations by the Swiss Ephemeris.
  * Implemented as a singleton to prevent multiple instantiations of the SE itself.
  */
-public class SEFrontend {
+class SEFrontend {
 
     private static final SEFrontend oneAndOnlyInstance = new SEFrontend();
     private final String path = "." + File.pathSeparator + "se";  // TODO --> constants ??
@@ -32,11 +32,11 @@ public class SEFrontend {
         // prevent direct instantiation.
     }
 
-    public static SEFrontend getSEFrontEnd() {
+    static SEFrontend getSEFrontEnd() {
         return oneAndOnlyInstance;
     }
 
-    public void setSwissEph(@NotNull SwissEph swissEph) {
+    void setSwissEph(@NotNull SwissEph swissEph) {
         this.swissEph = swissEph;
     }
     /**
@@ -47,7 +47,7 @@ public class SEFrontend {
      * @return instance of BodyPosition with the calculated values.
      */
     @NotNull
-    public BodyPosition calcBody(@NotNull SweDate sweDate, @NotNull BodyNames bodyName, @NotNull List<CalculationFlags> flags) {
+    BodyPosition calcBody(@NotNull SweDate sweDate, @NotNull BodyNames bodyName, @NotNull List<CalculationFlags> flags) {
         double[] results = new double[6];
         int flagValue = constructCombinedValueForFlags(flags);
         int returnCode = swissEph.calc(sweDate.getJulDay(), bodyName.getId(), flagValue, results);
@@ -77,6 +77,5 @@ public class SEFrontend {
         }
         return combinedValue;
     }
-
 
 }

@@ -5,7 +5,7 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.endpoint;
+package com.radixpro.share.domain;
 
 import com.sun.istack.internal.NotNull;
 

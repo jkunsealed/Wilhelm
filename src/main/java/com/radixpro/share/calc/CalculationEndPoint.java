@@ -5,12 +5,11 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.endpoint;
+package com.radixpro.share.calc;
 
 import com.radixpro.share.domain.BodyNames;
 import com.radixpro.share.domain.CalculationFlags;
-import com.radixpro.share.handlers.CalculationHandler;
-import com.radixpro.share.handlers.CalculationHandlerFactory;
+import com.radixpro.share.domain.CalculationResponseBody;
 import com.sun.istack.internal.NotNull;
 import swisseph.SweDate;
 
