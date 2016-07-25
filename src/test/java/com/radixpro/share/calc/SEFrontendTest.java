@@ -7,9 +7,7 @@
 
 package com.radixpro.share.calc;
 
-import com.radixpro.share.domain.BodyNames;
-import com.radixpro.share.domain.BodyPosition;
-import com.radixpro.share.domain.CalculationFlags;
+import com.radixpro.share.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +31,12 @@ public class SEFrontendTest {
     private SwissEph swissEphMock;
     @Mock
     private SweDate sweDateMock;
+    @Mock
+    private CalculationRequestBody requestBodyMock;
+    @Mock
+    private CalculationRequestHouses requestHousesMock;
+    @Mock
+    private Location locationMock;
     @InjectMocks
     private SEFrontend seFrontend;
 
@@ -41,28 +45,34 @@ public class SEFrontendTest {
     public void setUp() throws Exception {
         seFrontend = new SEFrontendFactory().getSEFrontend();
         // TODO find a way to mock parameter values by reference
+        when(locationMock.getLatitude()).thenReturn(22.0);
+        when(locationMock.getLongitude()).thenReturn(33.0);
+        when(requestBodyMock.getBodyName()).thenReturn(BodyNames.JUPITER);
+        when(requestBodyMock.getCalculationFLags()).thenReturn(constructFlags());
+        when(requestBodyMock.getJulianDayNr()).thenReturn(1234.5);
+        when(requestBodyMock.getLocation()).thenReturn(locationMock);
+        when(requestHousesMock.getLocation()).thenReturn(locationMock);
+        when(requestHousesMock.getJulianDayNr()).thenReturn(1234.5);
+        when(requestHousesMock.getCalculationFLags()).thenReturn(constructFlags());
+        when(requestHousesMock.getHouseSystem()).thenReturn(HouseSystems.ALCABITIUS);
         when(swissEphMock.calc(anyDouble(), anyInt(), anyInt(), anyObject())).thenReturn(3);
+        when(swissEphMock.swe_houses(anyDouble(), anyInt(), anyDouble(), anyDouble(), anyInt(), anyObject(),
+                anyObject())).thenReturn(3);
     }
-
 
 
     @Test
     public void calcBody() throws Exception {
-//        double[] expectedElements = constructResults();
-        BodyPosition bodyPosition = seFrontend.calcBody(sweDateMock, BodyNames.JUPITER, constructFlags());
+        BodyPosition bodyPosition = seFrontend.calcBody(requestBodyMock);
         assertNotNull(bodyPosition.getMainValue());
     }
 
-//    private double[] constructResults() {
-//        double[] results = new double[6];
-//        results[0] = 0.0;
-//        results[1] = 1.0;
-//        results[2] = 2.0;
-//        results[3] = 3.0;
-//        results[4] = 4.0;
-//        results[5] = 5.0;
-//        return results;
-//    }
+    @Test
+    public void calcHouses() throws Exception {
+        HousePositions housePositions = seFrontend.calcHouses(requestHousesMock);
+        assertNotNull(housePositions.getAscendant());
+    }
+
 
     private List<CalculationFlags> constructFlags() {
         List<CalculationFlags> flags = new ArrayList<>();

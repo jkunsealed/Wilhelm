@@ -7,9 +7,7 @@
 
 package com.radixpro.share.calc;
 
-import com.radixpro.share.domain.BodyNames;
-import com.radixpro.share.domain.CalculationFlags;
-import com.radixpro.share.domain.CalculationResponseBody;
+import com.radixpro.share.domain.*;
 import com.radixpro.share.util.Constants;
 import com.sun.istack.internal.NotNull;
 import swisseph.SweDate;
@@ -28,15 +26,21 @@ class CalculationHandler {
     }
 
     @NotNull
-    CalculationResponseBody calcBody(@NotNull SweDate sweDate,
-                                            @NotNull BodyNames bodyName,
-                                            @NotNull List<CalculationFlags> flags) {
+    CalculationResponseBody calcBody(@NotNull CalculationRequestBody request) {
         SEFrontend seFrontend = new SEFrontendFactory().getSEFrontend();
         CalculationResponseBody response = new CalculationResponseBody();
-        response.setPosition(seFrontend.calcBody(sweDate, bodyName, flags));
+        response.setPosition(seFrontend.calcBody(request));
         response.setStatus(Constants.STATUS_OK);
         return response;
     }
 
-
+    @NotNull
+    CalculationResponseHouses calcHouses(@NotNull CalculationRequestHouses request) {
+        SEFrontend seFrontend = new SEFrontendFactory().getSEFrontend();
+        CalculationResponseHouses response = new CalculationResponseHouses();
+        response.setHousePositions(seFrontend.calcHouses(request));
+        response.setHouseSystem(request.getHouseSystem());
+        response.setStatus(Constants.STATUS_OK);
+        return response;
+    }
 }

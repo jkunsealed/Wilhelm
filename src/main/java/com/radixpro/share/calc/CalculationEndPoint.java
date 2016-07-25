@@ -7,9 +7,7 @@
 
 package com.radixpro.share.calc;
 
-import com.radixpro.share.domain.BodyNames;
-import com.radixpro.share.domain.CalculationFlags;
-import com.radixpro.share.domain.CalculationResponseBody;
+import com.radixpro.share.domain.*;
 import com.sun.istack.internal.NotNull;
 import swisseph.SweDate;
 
@@ -21,10 +19,14 @@ import java.util.List;
 public class CalculationEndPoint {
 
     @NotNull
-    public CalculationResponseBody calcSingleBody(@NotNull SweDate sweDate,
-                                                  @NotNull BodyNames bodyName,
-                                                  @NotNull List<CalculationFlags> flags) {
+    public CalculationResponseBody calcSingleBody(@NotNull CalculationRequestBody request) {
         CalculationHandler calculationHandler = new CalculationHandlerFactory().getCalculationHandler();
-        return calculationHandler.calcBody(sweDate, bodyName, flags);
+        return calculationHandler.calcBody(request);
+    }
+
+    @NotNull
+    public CalculationResponseHouses calcHouses(@NotNull CalculationRequestHouses request) {
+        CalculationHandler calculationHandler = new CalculationHandlerFactory().getCalculationHandler();
+        return calculationHandler.calcHouses(request);
     }
 }

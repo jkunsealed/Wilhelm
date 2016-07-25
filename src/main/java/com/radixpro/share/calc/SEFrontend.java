@@ -7,12 +7,9 @@
 
 package com.radixpro.share.calc;
 
-import com.radixpro.share.domain.BodyNames;
-import com.radixpro.share.domain.BodyPosition;
-import com.radixpro.share.domain.CalculationFlags;
+import com.radixpro.share.domain.*;
 import com.radixpro.share.exceptions.CalculationException;
 import com.sun.istack.internal.NotNull;
-import swisseph.SweDate;
 import swisseph.SwissEph;
 
 import java.io.File;
@@ -41,21 +38,41 @@ class SEFrontend {
     }
     /**
      * Calculate a body.
-     * @param sweDate date for calculation.
-     * @param bodyName the body to calculate.
-     * @param flags settings for calculations.
+     * @param request required items to perform the calculation.
      * @return instance of BodyPosition with the calculated values.
      */
     @NotNull
-    BodyPosition calcBody(@NotNull SweDate sweDate, @NotNull BodyNames bodyName, @NotNull List<CalculationFlags> flags) {
+    BodyPosition calcBody(@NotNull CalculationRequestBody request) {
         double[] results = new double[6];
-        int flagValue = constructCombinedValueForFlags(flags);
-        int returnCode = swissEph.calc(sweDate.getJulDay(), bodyName.getId(), flagValue, results);
+        int flagValue = constructCombinedValueForFlags(request.getCalculationFLags());
+        int returnCode = swissEph.calc(request.getJulianDayNr(), request.getBodyName().getId(), flagValue, results);
         if (returnCode != flagValue) {
-            throw new CalculationException(String.format("Calculating body, flagValue: %1$d . Returncode: %2$d .", flagValue, returnCode));
+            throw new CalculationException(String.format("Calculating body, flagValue: %1$d . Returncode: %2$d .",
+                    flagValue, returnCode));
         }
-        return constructPosition(results, bodyName);
+        return constructPosition(results, request.getBodyName());
     }
+
+    @NotNull
+    HousePositions calcHouses(@NotNull CalculationRequestHouses request) {
+        double[] cuspPositions = new double[13];  // for Gauquelin: 37
+        double[] ascmcPositions = new double[10];
+        int flagValue = constructCombinedValueForFlags(request.getCalculationFLags());
+        int returnCode = swissEph.swe_houses(request.getJulianDayNr(), flagValue,
+                request.getLocation().getLatitude(), request.getLocation().getLongitude(),
+                request.getHouseSystem().getSeId(), cuspPositions, ascmcPositions);
+        if (returnCode != 0) {
+            throw new CalculationException(String.format("Calculating houses, flagValue: %1$d . Returncode: %2$d .",
+                    flagValue, returnCode));
+        }
+        HousePositions positions = new HousePositions();
+        positions.setAllCusps(cuspPositions);
+        positions.setAscendant(ascmcPositions[0]);
+        positions.setMC(ascmcPositions[1]);
+        positions.setVertex(ascmcPositions[3]);
+        return positions;
+    }
+
 
     @NotNull
     private BodyPosition constructPosition(@NotNull double[] elementsForPosition, @NotNull BodyNames bodyName) {
