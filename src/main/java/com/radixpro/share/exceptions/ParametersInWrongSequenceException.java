@@ -11,7 +11,7 @@ import com.sun.istack.internal.NotNull;
 
 public class ParametersInWrongSequenceException extends RuntimeException {
 
-    private String message;
+    private final String message;
 
     public ParametersInWrongSequenceException(@NotNull String value1, @NotNull String value2) {
         message = "Parameters " + value1 + " and " + value2 + " in wrong sequence.";

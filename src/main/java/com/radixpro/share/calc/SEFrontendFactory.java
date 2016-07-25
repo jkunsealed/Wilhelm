@@ -14,10 +14,9 @@ import java.io.File;
 class SEFrontendFactory {
 
     private final String path = "." + File.pathSeparator + "se";  // TODO --> constants ??
-    private SwissEph swissEph;
 
     SEFrontend getSEFrontend() {
-        swissEph = new SwissEph(path);
+        SwissEph swissEph = new SwissEph(path);
         SEFrontend seFrontend = SEFrontend.getSEFrontEnd();
         seFrontend.setSwissEph(swissEph);
         return seFrontend;

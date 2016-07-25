@@ -14,7 +14,7 @@ import com.sun.istack.internal.NotNull;
  */
 public class ParameterOutOfRangeException extends RuntimeException {
 
-    private String message;
+    private final String message;
 
     public ParameterOutOfRangeException(@NotNull String value) {
         message = "Parameter " + value + " out of range.";

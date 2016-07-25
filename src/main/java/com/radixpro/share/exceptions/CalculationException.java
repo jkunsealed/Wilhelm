@@ -14,7 +14,7 @@ import com.sun.istack.internal.NotNull;
  */
 public class CalculationException extends RuntimeException {
 
-    private String message;
+    private final String message;
 
     public CalculationException(@NotNull String description) {
         message = "Calculation error: " + description;
