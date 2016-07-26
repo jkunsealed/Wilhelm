@@ -5,50 +5,42 @@
  More information: http://radixpro.com/sw/license.
 ********************************************************************************************* */
 
-package com.radixpro.share.domain;
+package com.radixpro.share.analysis;
 
+import com.radixpro.share.domain.Signs;
 import com.radixpro.share.exceptions.AnalysisException;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class SignsTest {
+public class SignAnalysisTest {
 
-
-    private Signs sign;
+    private SignAnalysis signAnalysis;
 
     @Before
     public void setUp() {
-        sign = Signs.AQUARIUS;
+        signAnalysis = new SignAnalysis();
     }
 
-    @Test
-    public void getIndex() throws Exception {
-        int expected = 11;
-        assertEquals(expected, sign.getIndex());
-    }
 
     @Test
-    public void getSignForIndex() throws Exception {
-        Signs expected = Signs.SAGITTARIUS;
-        int index = 9;
-        assertEquals(expected, Signs.getSignForIndex(index));
+    public void getSignForLongitude() throws Exception {
+        double longitude = 155.5;
+        Signs expected = Signs.VIRGO;
+        assertEquals(expected, signAnalysis.getSignForLongitude(longitude));
     }
 
     @Test (expected = AnalysisException.class)
-    public void getSignForIndexTooLarge() {
-        int index = 13;
-        Signs.getSignForIndex(index);
+    public void getSignForLongitudeTooLarge() {
+        double longitude = 400.0;
+        signAnalysis.getSignForLongitude(longitude);
     }
 
     @Test (expected = AnalysisException.class)
-    public void getSignForIndexTooSmall() {
-        int index = 0;
-        Signs.getSignForIndex(index);
+    public void getSignForLongitudeTooSmall() {
+        double longitude = -33.33;
+        signAnalysis.getSignForLongitude(longitude);
     }
-
-
-
 
 }
