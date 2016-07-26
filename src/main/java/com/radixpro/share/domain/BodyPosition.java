@@ -11,7 +11,7 @@ package com.radixpro.share.domain;
  * Defines position in three dimensions for a body or a fictitious point. Also defines the speed of each dimensionm.
  * The actual values depend on the chosen CalculationFlags.
  */
-class BodyPosition {
+public class BodyPosition {
 
     private BodyNames bodyName;
     private double mainValue;
@@ -31,7 +31,7 @@ class BodyPosition {
 
     /**
      * Setter for the name of the calculated body.
-     * @param bodyName hte bodyName to use.
+     * @param bodyName the bodyName to use.
      */
     public void setBodyName(BodyNames bodyName) {
         this.bodyName = bodyName;
