@@ -1,0 +1,18 @@
+Wilhelm - Release Notes
+
+------------------------------------------------------------------------------------------------------------------------
+0.1.0 - 2016-07-26 - initial release
+------------------------------------------------------------------------------------------------------------------------
+- Calculation of a single planet
+    - calc.CalculationEndpoint.calcSingleBody()
+- Calculation of houses
+    - calc.CalculationEndpoint: added method calcHouses()
+- Analysis for signs (retrieves sign from longitude)
+    - analysis.SignsEndpoint.findSignForLongitud()
+- Analysis of relative position (compares two positions)
+    - analysis.RelativePOsitionEndPoint.isInZone()
+
+
+
+
+
