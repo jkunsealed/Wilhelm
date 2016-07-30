@@ -17,5 +17,17 @@ Wilhelm - Release Notes
 ------------------------------------------------------------------------------------------------------------------------
 - Fixed imports for notnull annotations, removed imports from obsolete sun libraries and used javax instead.
 
+------------------------------------------------------------------------------------------------------------------------
+0.2.0 - 2016-07-30 - completed for first version of Michel-library.
+------------------------------------------------------------------------------------------------------------------------
+- Additional domain objects
+    - ChartType, ChartData, ChartDataSeet
+    - Calendar, Project, SimpleDateTime
+- Exceptions: PersistencyException and ReadingException (both checked).
+- Data and file handling: FileLister, FilenameCreator, JsonReader, JsonWriter, Listrandomizer
+- Constants
+
+
+
 
 
