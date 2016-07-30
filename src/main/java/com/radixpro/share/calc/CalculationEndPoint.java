@@ -7,11 +7,12 @@
 
 package com.radixpro.share.calc;
 
-import com.radixpro.share.domain.*;
-import com.sun.istack.internal.NotNull;
-import swisseph.SweDate;
+import com.radixpro.share.domain.CalculationRequestBody;
+import com.radixpro.share.domain.CalculationRequestHouses;
+import com.radixpro.share.domain.CalculationResponseBody;
+import com.radixpro.share.domain.CalculationResponseHouses;
 
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 /**
  * Endpoint for Calculations.

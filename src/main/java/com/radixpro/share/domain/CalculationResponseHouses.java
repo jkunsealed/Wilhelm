@@ -7,7 +7,7 @@
 
 package com.radixpro.share.domain;
 
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotNull;
 
 public class CalculationResponseHouses implements CalculationResponse {
 
@@ -26,19 +26,21 @@ public class CalculationResponseHouses implements CalculationResponse {
         this.status = status;
     }
 
-    public void setHouseSystem(HouseSystems houseSystem) {
+    public void setHouseSystem(@ NotNull HouseSystems houseSystem) {
         this.houseSystem = houseSystem;
     }
 
+    @NotNull
     public HouseSystems getHouseSystem() {
         return houseSystem;
     }
 
+    @NotNull
     public HousePositions getHousePositions() {
         return housePositions;
     }
 
-    public void setHousePositions(HousePositions housePositions) {
+    public void setHousePositions(@NotNull HousePositions housePositions) {
         this.housePositions = housePositions;
     }
 }

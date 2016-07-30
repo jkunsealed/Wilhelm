@@ -7,7 +7,7 @@
 
 package com.radixpro.share.exceptions;
 
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotNull;
 
 /**
  * Exception that should be thrown if a parameter is outside of a predefined range.

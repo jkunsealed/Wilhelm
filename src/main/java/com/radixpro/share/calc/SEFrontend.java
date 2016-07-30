@@ -9,9 +9,9 @@ package com.radixpro.share.calc;
 
 import com.radixpro.share.domain.*;
 import com.radixpro.share.exceptions.CalculationException;
-import com.sun.istack.internal.NotNull;
 import swisseph.SwissEph;
 
+import javax.validation.constraints.NotNull;
 import java.io.File;
 import java.util.List;
 

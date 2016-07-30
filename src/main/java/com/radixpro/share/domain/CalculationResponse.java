@@ -7,7 +7,7 @@
 
 package com.radixpro.share.domain;
 
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotNull;
 
 public interface CalculationResponse {
 
