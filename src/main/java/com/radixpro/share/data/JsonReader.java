@@ -10,6 +10,7 @@
 package com.radixpro.share.data;
 
 import com.radixpro.share.exceptions.ReadingException;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -27,12 +28,12 @@ public class JsonReader {
     /**
      * Read object from JSON.
      *
-     * @param inputData file tyhat contains the inputted data.
+     * @param inputData file that contains the inputted data.
      * @return JSONObject presentation of data in the JSON file.
      * @throws ReadingException in case of a parse error or an I/O error.
      */
     @NotNull
-    public JSONObject readFromFile(@NotNull File inputData) throws ReadingException {
+    public JSONObject readObjectFromFile(@NotNull File inputData) throws ReadingException {
         JSONParser parser = new JSONParser();
         try {
             Object object = parser.parse(new FileReader(inputData));
@@ -45,4 +46,28 @@ public class JsonReader {
             throw new ReadingException("Could not read file : " + inputData + " . Original message " + ioe.getMessage());
         }
     }
+
+    /**
+     * Read array from JSON.
+     *
+     * @param inputData file that contains the inputted data.
+     * @return JSONArray presentation of data in the JSON file.
+     * @throws ReadingException in case of a parse error or an I/O error.
+     */
+    @NotNull
+    public JSONArray readArrayFromFile(@NotNull File inputData) throws ReadingException {
+        JSONParser parser = new JSONParser();
+        try {
+            Object object = parser.parse(new FileReader(inputData));
+            return (JSONArray) object;
+        } catch (ParseException pe) {
+            // TODO add logging
+            throw new ReadingException("Could not parse results of : " + inputData + " . Original message " + pe.getMessage());
+        } catch (IOException ioe) {
+            // TODO add logging
+            throw new ReadingException("Could not read file : " + inputData + " . Original message " + ioe.getMessage());
+        }
+    }
+
+
 }

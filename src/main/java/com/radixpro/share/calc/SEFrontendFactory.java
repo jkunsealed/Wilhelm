@@ -11,11 +11,11 @@ import swisseph.SwissEph;
 
 import java.io.File;
 
-class SEFrontendFactory {
+public class SEFrontendFactory {
 
     private final String path = "." + File.pathSeparator + "se";  // TODO --> constants ??
 
-    SEFrontend getSEFrontend() {
+    public SEFrontend getSEFrontend() {
         SwissEph swissEph = new SwissEph(path);
         SEFrontend seFrontend = SEFrontend.getSEFrontEnd();
         seFrontend.setSwissEph(swissEph);

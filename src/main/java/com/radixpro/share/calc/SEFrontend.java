@@ -19,10 +19,10 @@ import java.util.List;
  * Frontend for calculations by the Swiss Ephemeris.
  * Implemented as a singleton to prevent multiple instantiations of the SE itself.
  */
-class SEFrontend {
+public class SEFrontend {
 
     private static final SEFrontend oneAndOnlyInstance = new SEFrontend();
-    private final String path = "." + File.pathSeparator + "se";  // TODO --> constants ??
+    private final String path = "." + File.separator + "se";  // TODO --> constants ??
     private SwissEph swissEph;
 
     private SEFrontend() {
@@ -42,13 +42,15 @@ class SEFrontend {
      * @return instance of BodyPosition with the calculated values.
      */
     @NotNull
-    BodyPosition calcBody(@NotNull CalculationRequestBody request) {
+    public BodyPosition calcBody(@NotNull CalculationRequestBody request) {
         double[] results = new double[6];
         int flagValue = constructCombinedValueForFlags(request.getCalculationFLags());
-        int returnCode = swissEph.calc(request.getJulianDayNr(), request.getBodyName().getId(), flagValue, results);
-        if (returnCode != flagValue) {
-            throw new CalculationException(String.format("Calculating body, flagValue: %1$d . Returncode: %2$d .",
-                    flagValue, returnCode));
+        int returnCode = 0;
+        try {
+            returnCode = swissEph.calc(request.getJulianDayNr(), request.getBodyName().getId(), flagValue, results);
+        } catch (Exception e) {
+            throw new CalculationException(String.format("Exception when calculating body, flagValue: %1$d . " +
+                            "Returncode: %2$d . Exception message: %3$s", flagValue, returnCode, e.getMessage()));
         }
         return constructPosition(results, request.getBodyName());
     }
